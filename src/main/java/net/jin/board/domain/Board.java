@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,6 +27,10 @@ public class Board {
 	
 	@Column(updatable = false)
 	private Long cnt = 0L;
+	
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID", nullable = false, updatable = false)
+	private Member member;
 
 	public Long getSeq() {
 		return seq;
@@ -66,13 +72,25 @@ public class Board {
 		this.cnt = cnt;
 	}
 
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+		member.getBoardList().add(this);
+	}
+
 	@Override
 	public String toString() {
 		return "Board [seq=" + seq + ", title=" + title + ", content=" + content + ", createDate=" + createDate
 				+ ", cnt=" + cnt + ", getSeq()=" + getSeq() + ", getTitle()=" + getTitle() + ", getContent()="
-				+ getContent() + ", getCreateDate()=" + getCreateDate() + ", getCnt()=" + getCnt() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ getContent() + ", getCreateDate()=" + getCreateDate() + ", getCnt()=" + getCnt() + ", getMember()="
+				+ getMember() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
+
+	
 	
 	
 }
