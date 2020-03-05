@@ -59,8 +59,9 @@ public class BoardRepositoryTest {
 		Member member = memberRepository.findById("member").get();
 		
 		System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
-		for (Board board : member.getBoardList()) {
-			System.out.println("-----> " + board.toString());
-		}
+		System.out.println("[ " + member.getBoardList() + "테스트");
+		//		for (Board board : member.getBoardList()) {
+//			System.out.println("-----> " + board.toString());
+//		}
 	}
 }
