@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import net.jin.board.domain.Board;
+import net.jin.board.domain.Member;
 import net.jin.board.persistence.BoardRepository;
 import net.jin.board.persistence.MemberRepository;
 
@@ -40,16 +41,26 @@ public class BoardRepositoryTest {
 	 * boardRepository.save(board); } }
 	 */
 	
+	/*
+	 * @Test public void testGetBoard() {
+	 * 
+	 * Board board = boardRepository.findById(1L).get();
+	 * 
+	 * System.out.println("[" + board.getSeq() + "번 게시글 상세정보 ]");
+	 * System.out.println("제목\t : " + board.getTitle());
+	 * System.out.println("작성자\t : " + board.getMember().getName());
+	 * System.out.println("내용\t : " + board.getContent());
+	 * System.out.println("작성일\t : " + board.getCreateDate());
+	 * System.out.println("조회수\t : " + board.getCnt()); }
+	 */
+	
 	@Test
-	public void testGetBoard() {
+	public void testGetBoardList() {
+		Member member = memberRepository.findById("member").get();
 		
-		Board board = boardRepository.findById(1L).get();
-		
-		System.out.println("[" + board.getSeq() + "번 게시글 상세정보 ]");
-		System.out.println("제목\t : " + board.getTitle());
-		System.out.println("작성자\t : " + board.getMember().getName());
-		System.out.println("내용\t : " + board.getContent());
-		System.out.println("작성일\t : " + board.getCreateDate());
-		System.out.println("조회수\t : " + board.getCnt());
+		System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
+		for (Board board : member.getBoardList()) {
+			System.out.println("-----> " + board.toString());
+		}
 	}
 }
