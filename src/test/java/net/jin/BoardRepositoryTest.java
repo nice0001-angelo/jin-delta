@@ -59,9 +59,15 @@ public class BoardRepositoryTest {
 		Member member = memberRepository.findById("member").get();
 		
 		System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
-		System.out.println("[ " + member.getBoardList().toString() + "테스트");
-		//		for (Board board : member.getBoardList()) {
-//			System.out.println("-----> " + board.toString());
-//		}
+		System.out.println("[ " + member.getPassword() + "가 등록한 게시글 ]");
+		try {
+					for (Board board : member.getBoardList()) {
+			System.out.println("-----> " + board.toString());
+		}
+
+			/* System.out.println("[ " + member.getBoardList().size() + " 사이즈]"); */
+		}catch (Exception e){
+			System.out.println("e.getMessage() : " + e.getMessage());
+		}
 	}
 }
