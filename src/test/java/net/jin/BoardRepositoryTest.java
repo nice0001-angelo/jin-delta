@@ -60,6 +60,7 @@ public class BoardRepositoryTest {
 		
 		System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
 		System.out.println("[ " + member.getPassword() + "가 등록한 게시글 ]");
+		System.out.println("-----> " + member.getBoardList().toString());
 		try {
 					for (Board board : member.getBoardList()) {
 			System.out.println("-----> " + board.toString());
