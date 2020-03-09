@@ -27,14 +27,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteBoard(Board board) {
-		// TODO Auto-generated method stub
-		
+		boardRepository.deleteById(board.getSeq());
 	}
 
 	@Override
 	public Board getBoard(Board board) {
-		// TODO Auto-generated method stub
-		return null;
+		Board findedBoard = boardRepository.findById(board.getSeq()).get();
+		return findedBoard;
 	}
 
 	@Override
