@@ -8,16 +8,21 @@ import net.jin.board.persistence.BoardRepository;
 
 public class BoardServiceImpl implements BoardService {
 
+	@Autowired
+	BoardRepository boardRepository;
+	
 	@Override
 	public void insertBoard(Board board) {
-		// TODO Auto-generated method stub
-		
-	}
+		boardRepository.save(board);
+			}
 
 	@Override
 	public void updateBoard(Board board) {
-		// TODO Auto-generated method stub
+		Board findedBoard = boardRepository.findById(board.getSeq()).get();
 		
+		findedBoard.setTitle(board.getTitle());
+		findedBoard.setContent(board.getContent());
+		boardRepository.save(findedBoard);		
 	}
 
 	@Override
