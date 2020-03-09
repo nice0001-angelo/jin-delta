@@ -7,15 +7,16 @@ import net.jin.board.domain.Board;
 import net.jin.board.persistence.BoardRepository;
 
 public class BoardServiceImpl implements BoardService {
-	
-	@Autowired
-	private BoardRepository boardRepository;
-	
+
+	@Override
 	public void insertBoard(Board board) {
-		boardRepository.save(board);
+		// TODO Auto-generated method stub
+		
 	}
-	
+
+	@Override
 	public void updateBoard(Board board) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -36,4 +37,6 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+		
 }
