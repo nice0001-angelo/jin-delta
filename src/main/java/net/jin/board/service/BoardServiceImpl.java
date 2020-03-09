@@ -1,7 +1,11 @@
 package net.jin.board.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import net.jin.board.domain.Board;
 import net.jin.board.persistence.BoardRepository;
@@ -38,8 +42,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Page<Board> getBoardList(Board board) {
-		// TODO Auto-generated method stub
-		return null;
+		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
+		return boardRepository.getBoardList(pageable);
 	}
 
 		
