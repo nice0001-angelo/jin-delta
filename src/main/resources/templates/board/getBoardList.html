@@ -11,7 +11,7 @@
 	<a th:href="@{/system/logout}">로그아웃</a>&nbsp;&nbsp;&nbsp;
 	<a th:href="@{/admin/adminPage}">게시판관리</a>
 	<hr>
-	<table th:align="center" border="1" the:cellpadding="0"
+	<table th:align="center" border="1" th:cellpadding="0"
 		th:cellspacing="0" th:width="700">
 
 		<tr>
@@ -22,7 +22,7 @@
 			<th bgcolor="orange" width="50">조회수</th>
 		</tr>
 
-		<tr th:each="board, statd : ${boardList}">
+		<tr th:each="board, state : ${boardList}">
 			<td th:text="${state.count}" th:align="center">
 			<td><a th:href="@{/board/getBoard(seq=${board.seq})}"
 				th:text="${board.title}"></a></td>

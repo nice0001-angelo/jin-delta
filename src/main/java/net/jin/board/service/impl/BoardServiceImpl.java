@@ -1,4 +1,4 @@
-package net.jin.board.service;
+package net.jin.board.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import net.jin.board.domain.Board;
 import net.jin.board.persistence.BoardRepository;
+import net.jin.board.service.BoardService;
 
 @Service
 public class BoardServiceImpl implements BoardService {
