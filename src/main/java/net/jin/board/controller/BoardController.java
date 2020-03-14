@@ -34,7 +34,7 @@ public class BoardController {
 		return "board/getBoard";
 	}
 	
-	@GetMapping("/insertBoard")
+	@GetMapping("/insertBoardView")
 	public String insertBoardView() {
 		return "/board/insertBoard";
 	}
@@ -43,6 +43,6 @@ public class BoardController {
 	@PostMapping("/insertBoard")
 	public String insertBoard(Board board) {
 		boardService.insertBoard(board);
-		return "redirec:getBoardList";
+		return "redirect:getBoardList";
 	}
 }
