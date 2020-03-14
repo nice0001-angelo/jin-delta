@@ -11,10 +11,16 @@ public class SecurityConfig {
 	private SecurityUserDetailsService securityUserDetailsService;
 	
 	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception{
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.userDetailsService(securityUserDetailsService);
 		
 		httpSecurity.authorizeRequests().antMatchers("/","/system/**").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/board/**").authenticated();
+		httpSecurity.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+		
+		httpSecurity.csrf().disable();
+		httpSecurity.formLogin().loginPage("/system/login").defaultSuccessUrl("/board/getBoardList", true);
+		httpSecurity.exceptionHandling().accessDeniedPage("/system/accessDenied");
+		httpSecurity.logout().logoutUrl("/system/logout").invalidateHttpSession(true).logoutSuccessUrl("/");
 	}
-
 }
