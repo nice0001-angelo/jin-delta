@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.jin.board.domain.Board;
@@ -31,5 +32,10 @@ public class BoardController {
 		Board getboard = boardService.getBoard(board);
 		model.addAttribute("board", getboard);
 		return "board/getBoard";
+	}
+	
+	@PostMapping("/insertBoard")
+	public String insertBoard() {
+		return "board/insertBoard";
 	}
 }
