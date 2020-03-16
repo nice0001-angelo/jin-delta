@@ -1,3 +1,4 @@
+
 package net.jin.board.controller;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ public class SecurityController {
 	public void login() {
 	}
 
-	@GetMapping("/system/accessDeined")
+	@GetMapping("/system/accessDenied")
 	public void accessDenied() {
 	}
 	
