@@ -18,7 +18,7 @@ public class SecurityController {
 	public void logout() {
 	}
 
-	@GetMapping("/adimin/adminPage")
+	@GetMapping("/admin/adminPage")
 	public void admin() {
 	}
 }
