@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import net.jin.board.domain.Board;
+import net.jin.board.domain.Search;
 import net.jin.board.persistence.BoardRepository;
 import net.jin.board.service.BoardService;
 
@@ -43,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Page<Board> getBoardList(Board board) {
+	public Page<Board> getBoardList(Search search) {
 		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
 		return boardRepository.getBoardList(pageable);
 	}
