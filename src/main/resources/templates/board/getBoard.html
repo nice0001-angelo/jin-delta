@@ -38,7 +38,7 @@
 		</table>
 	</form>
 	<a th:href="@{/board/insertBoardView}">글등록</a>&nbsp;&nbsp;&nbsp;
-	<a th:href="@{/board/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
+	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/board/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
 	<a th:href="@{/board/getBoardList}">글목록</a>
 </body>
 </html>
