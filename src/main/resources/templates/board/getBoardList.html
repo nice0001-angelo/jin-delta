@@ -23,6 +23,21 @@
 		</a>
 	</span>
 	<hr>
+	
+	<!-- 검색시작 -->
+	<form th:action="@{/board/getBoardList}" method="post">
+		<table th:align="center" border="1" th:cellpadding="0" th:cellspace="0" th:width="700">
+		<tr>
+			<td align="right">
+				<select name="serachCondition">
+				<option value="TITLE">제목</option>
+				<option value="CONTENT">내용</option>
+				</select>
+		
+		</table>
+	</form>
+	
+	
 	<table th:align="center" border="1" th:cellpadding="0"
 		th:cellspacing="0" th:width="700">
 
