@@ -1,5 +1,6 @@
 package net.jin.board.service.impl;
 
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,19 +21,19 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	BoardRepository boardRepository;
-	
+
 	@Override
 	public void insertBoard(Board board) {
 		boardRepository.save(board);
-			}
+	}
 
 	@Override
 	public void updateBoard(Board board) {
 		Board findedBoard = boardRepository.findById(board.getSeq()).get();
-		
+
 		findedBoard.setTitle(board.getTitle());
 		findedBoard.setContent(board.getContent());
-		boardRepository.save(findedBoard);		
+		boardRepository.save(findedBoard);
 	}
 
 	@Override
@@ -49,18 +50,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Page<Board> getBoardList(Search search) {
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
-		
+
 		QBoard qboard = QBoard.board;
+
 		
-		if(search.getSearchCondition().equals("TITLE")) {
-			booleanBuilder.and(qboard.title.like("%"+search.getSearchKeyword()+"%"));
-		}else if(search.getSearchCondition().equals("CONTENT")) {
-			booleanBuilder.and(qboard.content.like("%"+search.getSearchKeyword()+"%"));
+		if (search.getSearchCondition().equals("TITLE")) {
+			
+			booleanBuilder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
+		} else if (search.getSearchCondition().equals("CONTENT")) {
+			booleanBuilder.and(qboard.content.like("%" + search.getSearchKeyword() + "%"));
 		}
-		
+
 		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
 		return boardRepository.findAll(booleanBuilder, pageable);
 	}
 
-		
 }
