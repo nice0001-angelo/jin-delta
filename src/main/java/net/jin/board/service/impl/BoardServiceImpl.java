@@ -7,7 +7,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.querydsl.core.BooleanBuilder;
+
 import net.jin.board.domain.Board;
+import net.jin.board.domain.QBoard;
 import net.jin.board.domain.Search;
 import net.jin.board.persistence.BoardRepository;
 import net.jin.board.service.BoardService;
@@ -45,8 +48,18 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Page<Board> getBoardList(Search search) {
+		BooleanBuilder booleanBuilder = new BooleanBuilder();
+		
+		QBoard qboard = QBoard.board;
+		
+		if(search.getSearchCondition().equals("TITLE")) {
+			booleanBuilder.and(qboard.title.like("%"+search.getSearchKeyword()+"%"));
+		}else if(search.getSearchCondition().equals("CONTENT")) {
+			booleanBuilder.and(qboard.content.like("%"+search.getSearchKeyword()+"%"));
+		}
+		
 		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
-		return boardRepository.getBoardList(pageable);
+		return boardRepository.findAll(booleanBuilder, pageable);
 	}
 
 		
