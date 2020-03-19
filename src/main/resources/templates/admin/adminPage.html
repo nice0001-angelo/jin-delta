@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>게시판 관리</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-</head>
+
+<head th:replace="./include/main_header :: mainHeader"></head>
 
 <body th:align="center">
+
+<nav th:replace="./include/main_navigation :: mainNavigation"></nav>
+
 	<h1>관리자님 안녕하세요 환영합니다.</h1>
 	<h4>게시 글 목록으로 <a th:href="@{/board/getBoardList}">이동</a>를 누르세요.</h4>
 </body>
