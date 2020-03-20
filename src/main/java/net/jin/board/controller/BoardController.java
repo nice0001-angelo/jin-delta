@@ -1,6 +1,7 @@
 
 package net.jin.board.controller;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,11 +21,15 @@ import net.jin.board.service.BoardService;
 @RequestMapping("/board")
 public class BoardController {
 
+	private static final Logger log = org.slf4j.LoggerFactory.getLogger(BoardController.class);
+	
 	@Autowired
 	private BoardService boardService;
 
 	@RequestMapping("/getBoardList")
 	public String getBoardList(Model model, Search search) {
+		log.info("getSearchCondition:"+search.getSearchCondition());
+		log.info("getSearchKeyword:"+search.getSearchKeyword());
 		if(search.getSearchCondition() == null) search.setSearchCondition("TITLE");
 		if(search.getSearchKeyword() == null) search.setSearchKeyword("");
 		Page<Board> boardList = boardService.getBoardList(search);
