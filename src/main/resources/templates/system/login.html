@@ -9,37 +9,19 @@
 	<nav th:replace="./include/main_navigation :: mainNavigation"></nav>
 
 	<h1>로그인</h1>
-	<form action="/action_page.php">
+	<form method = "post">
 		<div class="form-group">
-			<label for="email">Email address:</label> <input type="email"
-				class="form-control" id="email">
+			<label for="UserName">User Name:</label>
+			<input type="text"	class="form-control" name="username">
 		</div>
 		<div class="form-group">
-			<label for="pwd">Password:</label> <input type="password"
-				class="form-control" id="pwd">
+			<label for="password">Password:</label> 
+			<input type="password" class="form-control" name="password">
 		</div>
 		<div class="checkbox">
 			<label><input type="checkbox"> Remember me</label>
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>
-	</form>
-
-	<form method="post">
-		<table th:align="center" border="1" th:cellpadding="0"
-			th:cellspacing="0">
-			<tr>
-				<td bgcolor="orange">아이디</td>
-				<td><input type="text" name="username" /></td>
-			</tr>
-			<tr>
-				<td bgcolor="orange">비밀번호</td>
-				<td><input type="password" name="password" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" value="로그인" />
-				</td>
-			</tr>
-		</table>
 	</form>
 
 	<footer th:replace="./include/main_footer :: mainFooter"></footer>
