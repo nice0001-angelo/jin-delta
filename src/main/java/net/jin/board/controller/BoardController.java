@@ -17,10 +17,11 @@ import net.jin.board.security.SecurityUser;
 import net.jin.board.service.BoardService;
 
 @Controller
-
 @RequestMapping("/board")
 public class BoardController {
 
+
+	
 	private static final Logger log = org.slf4j.LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
