@@ -16,4 +16,14 @@ public class HomeController {
 	public String about() {
 		return "/text/about";
 	}
+	
+	@GetMapping("/cultureBlog")
+	public String cultureBlog() {
+		return "/text/cultureblog";
+	}
+	
+	@GetMapping("/foodBlog")
+	public String foodBlog() {
+		return "/text/foodblog";
+	}
 }
