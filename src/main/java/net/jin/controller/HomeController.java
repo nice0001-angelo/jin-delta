@@ -22,8 +22,8 @@ public class HomeController {
 		return "/text/cultureblog";
 	}
 	
-	@GetMapping("/foodBlog")
+	@GetMapping("/foodBlog1")
 	public String foodBlog() {
-		return "/text/foodblog";
+		return "/text/foodblog1";
 	}
 }
