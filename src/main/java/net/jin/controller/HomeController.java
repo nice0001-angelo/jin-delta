@@ -23,7 +23,12 @@ public class HomeController {
 	}
 	
 	@GetMapping("/foodBlog1")
-	public String foodBlog() {
+	public String foodBlog1() {
 		return "/text/foodblog1";
+	}
+	
+	@GetMapping("/foodBlog2")
+	public String foodBlog2() {
+		return "/text/foodblog2";
 	}
 }
