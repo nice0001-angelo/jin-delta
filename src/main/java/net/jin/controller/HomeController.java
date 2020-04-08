@@ -31,4 +31,9 @@ public class HomeController {
 	public String foodBlog2() {
 		return "/text/foodblog2";
 	}
+	
+	@GetMapping("/foodBlog3")
+	public String foodBlog3() {
+		return "/text/foodblog3";
+	}
 }
